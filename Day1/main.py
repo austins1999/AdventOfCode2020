@@ -1,7 +1,7 @@
 
 def main():
     data = []
-    file = open("input.txt", "r")
+    file = open("Day1/input.txt", "r")
     for line in file:
         data.append(int(line))
     file.close()
