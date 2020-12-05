@@ -50,13 +50,13 @@ def partTwo():
             index = currPassport.find("hgt:")
             if(index != -1):
                 endIndex = currPassport.find("c", index)
-                if(endIndex != -1 and (endIndex - index) < 7):
+                if(endIndex != -1 and (endIndex - index) < 8):
                     hgt = currPassport[(index+4):endIndex]
                     hgt = int(hgt)
                     validFields[3] = (hgt >= 150 and hgt <= 193)
                 else:
                     endIndex = currPassport.find("i", index)
-                    if(endIndex != -1 and (endIndex - index) < 7):
+                    if(endIndex != -1 and (endIndex - index) < 8):
                         hgt = currPassport[(index+4):endIndex]
                         hgt = int(hgt)
                         validFields[3] = (hgt >= 59 and hgt <= 76)
@@ -67,26 +67,25 @@ def partTwo():
                     lookinGood = True
                     i = (index + 5)
                     while (i < (index+11) and lookinGood):
-                        if (currPassport[i] != "0" or
-                            currPassport[i] != "1" or
-                            currPassport[i] != "2" or
-                            currPassport[i] != "3" or
-                            currPassport[i] != "4" or
-                            currPassport[i] != "5" or
-                            currPassport[i] != "6" or
-                            currPassport[i] != "7" or
-                            currPassport[i] != "8" or
-                            currPassport[i] != "9" or
-                            currPassport[i] != "a" or
-                            currPassport[i] != "b" or
-                            currPassport[i] != "c" or
-                            currPassport[i] != "d" or
-                            currPassport[i] != "e" or
-                            currPassport[i] != "f"):
+                        if (currPassport[i] != '0' and
+                            currPassport[i] != '1' and
+                            currPassport[i] != '2' and
+                            currPassport[i] != '3' and
+                            currPassport[i] != '4' and
+                            currPassport[i] != '5' and
+                            currPassport[i] != '6' and
+                            currPassport[i] != '7' and
+                            currPassport[i] != '8' and
+                            currPassport[i] != '9' and
+                            currPassport[i] != 'a' and
+                            currPassport[i] != 'b' and
+                            currPassport[i] != 'c' and
+                            currPassport[i] != 'd' and
+                            currPassport[i] != 'e' and
+                            currPassport[i] != 'f'):
                             lookinGood = False
                         i += 1
                     validFields[4] = ((currPassport[(index+11)] == " " or currPassport[(index+11)] == "\n") and lookinGood)
-
 
             index = currPassport.find("ecl:")
             if(index != -1):
@@ -103,7 +102,6 @@ def partTwo():
                     pid = int(pid)
                     pid = str(pid)
                     validFields[6] = (len(pid) == 9)
-                    print(validFields)
                 except:
                     pass
             
@@ -115,11 +113,6 @@ def partTwo():
 
         else:
             currPassport += line
-
-    if("byr:" in currPassport and "iyr:" in currPassport and 
-        "eyr:" in currPassport and "hgt:" in currPassport and "hcl:" in currPassport
-        and "ecl:" in currPassport and "pid:" in currPassport):
-        validCount += 1
 
     print(str(validCount) + " valid passports detected.")
 
