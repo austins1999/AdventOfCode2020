@@ -99,8 +99,7 @@ def partTwo():
                     endIndex = currPassport.find("\n", index)
                 pid = currPassport[(index+4):endIndex]
                 try:
-                    pid = int(pid)
-                    pid = str(pid)
+                    int(pid)
                     validFields[6] = (len(pid) == 9)
                 except:
                     pass
